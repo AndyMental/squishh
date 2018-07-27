@@ -24,3 +24,13 @@ Rails.application.config.assets.precompile += %w( jasny-bootstrap.js )
 Rails.application.config.assets.precompile += %w( flexisel.js )
 Rails.application.config.assets.precompile += %w( custom.js )
 Rails.application.config.assets.precompile += %w( ckeditor/*)
+
+Dir.glob("#{Rails.root}/app/**/*.js").each do |path|
+  Rails.application.config.assets.precompile += %w( path )
+end
+
+Dir.glob("#{Rails.root}/app/**/*.css").each do |path|
+  Rails.application.config.assets.precompile += %w( path )
+end
+
+Rails.application.config.assets.precompile += %w(images/* stylesheets/* javascripts/* config/*)

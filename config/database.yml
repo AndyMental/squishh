@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: unikorn_production
-  username: unikorn
-  password: <%= ENV['UNIKORN_DATABASE_PASSWORD'] %>
