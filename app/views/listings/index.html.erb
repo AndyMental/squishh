@@ -79,9 +79,9 @@
                       <div class="colored-shadow" style="background-image: url(&quot;<%= listing.image.url %>&quot;); opacity: 1;"></div>
                     </div>
                     <div class="card-body ">
-                      <h6 class="card-category text-danger">
+                      <!-- <h6 class="card-category text-danger">
                         <i class="material-icons">trending_up</i> Trending
-                      </h6>
+                      </h6> -->
                       <h4 class="card-title">
                         <%= link_to listing.name, listing %>
                       </h4>
@@ -89,7 +89,7 @@
                     <div class="card-footer ">
                       <div class="author">
                         <a href="#pablo">
-                          <img src="<%= asset_url('marc.jpg') %>" alt="..." class="avatar img-raised">
+                          <%= image_tag avatar_url(listing.user), class:"avatar img-raised" %>
                           <span><%= listing.user.name %></span>
                         </a>
                       </div>
