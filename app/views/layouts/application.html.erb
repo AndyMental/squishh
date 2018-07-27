@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="<%= asset_url('apple-icon.png') %>">
+    <link rel="icon" type="image/png" href="<%= asset_url('favicon.png') %>">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      Squishh
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!-- Extra details for Live View on GitHub Pages -->
+    <!-- Canonical SEO -->
+    <link rel="canonical" href="//www.squishh.com/" />
+    <!--  Social tags      -->
+    <meta name="keywords" content="sell slime, slime seller, etsy for slime, squishh slime seller, squishh, squishh">
+    <meta name="description" content="Start selling your slime's with the most Badass Platform available in the market.">
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="We are Etsy for Slime Sellers">
+    <meta itemprop="description" content="Get your Slime products listed with us and get started as a Slime Entreprenuer with UniKorn.">
+    <meta itemprop="image" content="//s3.amazonaws.com/">
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="product">
+    <meta name="twitter:site" content="@squishh">
+    <meta name="twitter:title" content="UniKorn, Etsy for Slime Sellers">
+    <meta name="twitter:description" content="Start selling your slime's with the most Badass Platform available in the market.">
+    <meta name="twitter:creator" content="@squishh">
+    <meta name="twitter:image" content="//s3.amazonaws.com/">
+    <!-- Open Graph data -->
+    <meta property="fb:app_id" content="1111111111111111">
+    <meta property="og:title" content="UniKorn, Etsy for Slime Sellers" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="../welcome.html" />
+    <meta property="og:image" content="//s3.amazonaws.com/"/>
+    <meta property="og:description" content="Start Your Slime Store with UniKorn, We are Etsy for Slime Sellers." />
+    <meta property="og:site_name" content="Squishh" />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= tag :meta, :name => "stripe-key", :content => ENV["STRIPE_PUBLIC_KEY"] %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'jquery' %>
+    <script async defer src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="sidebar-collapse">
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/messages' %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+    <!--   Core JS Files   -->
+    <%= javascript_include_tag 'popper' %>
+    <%= javascript_include_tag 'bootstrap-material-design' %>
+    <%= javascript_include_tag 'moment' %>
+    <!--  Plugin for the Datepicker, full documentation here: //github.com/Eonasdan/bootstrap-datetimepicker -->
+    <%= javascript_include_tag 'bootstrap-datetimepicker' %>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <%= javascript_include_tag 'nouislider' %>
+    <!--   Plugin for Tags, full documentation here: //github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+    <%= javascript_include_tag 'bootstrap-tagsinput' %>
+    <!--   Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <%= javascript_include_tag 'bootstrap-selectpicker' %>
+    <!--   Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+    <%= javascript_include_tag 'jasny-bootstrap' %>
+    <!--   Plugin for Small Gallery in Product Page -->
+    <%= javascript_include_tag 'flexisel' %>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="//buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+    <%= javascript_include_tag 'custom' %>
+  </body>
+</html>

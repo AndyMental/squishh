@@ -1,0 +1,254 @@
+<div class="page-header header-filter" data-parallax="true" style="background-image: url(&quot;<%= asset_url('main.jpg') %>&quot;); transform: translate3d(0px, 0px, 0px);">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1 class="title">Fact about Slime!!</h1>
+        <h4>Slime was a toy product manufactured by Mattel, sold in a plastic trash can and introduced in February 1976.<br>
+          It consisted of a non-toxic viscous, squishy and oozy green or other color material made primarily from guar gum.</h4>
+        <br>
+        <% if user_signed_in? %>
+          <%= link_to sales_path, class:"btn btn-success btn-raised btn-lg" do %>
+            <i class="fa fa-play"></i> Sell your Slime Products
+          <% end %>
+        <% else %>
+          <%= link_to new_user_registration_path, class:"btn btn-success btn-raised btn-lg" do %>
+            <i class="fa fa-play"></i> Sell your Slime Products
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="landing-page main main-raised">
+  <div class="container">
+    <div class="section padding-zero text-center">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <h5 class="description">Etsy for Slime Products</h5>
+          <h2 class="title">UniKorn, Platform for getting all types of Slime Products and Toys</h2>
+        </div>
+      </div>
+      <div class="features">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="info info-horizontal">
+              <div class="icon icon-rose">
+                <i class="material-icons">all_out</i>
+              </div>
+              <div class="description">
+                <h4 class="info-title">Unique everything</h4>
+                <p>We have millions of one-of-a-kind items, so you can find whatever you need (or really, really want).</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info info-horizontal">
+              <div class="icon icon-rose">
+                <i class="material-icons">supervised_user_circle</i>
+              </div>
+              <div class="description">
+                <h4 class="info-title">Independent sellers</h4>
+                <p>Buy directly from someone who put their heart and soul into making something special.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info info-horizontal">
+              <div class="icon icon-rose">
+                <i class="material-icons">security</i>
+              </div>
+              <div class="description">
+                <h4 class="info-title">Secure shopping</h4>
+                <p>We use best-in-class technology to protect your transactions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="cards" class="cd-section">
+      <div class="section padding-zero">
+        <div class="cards">
+          <div class="container">
+            <div class="row">
+              <% @listings.each do |listing| %>
+                <div class="col-lg-4 col-md-6">
+                  <div class="card card-blog">
+                    <div class="hvr-shrink card-header card-header-image">
+                      <%= link_to image_tag(listing.image.url, class: "img"), listing %>
+                      <div class="colored-shadow" style="background-image: url(&quot;<%= listing.image.url %>&quot;); opacity: 1;"></div>
+                    </div>
+                    <div class="card-body ">
+                      <h6 class="card-category text-danger">
+                        <i class="material-icons">trending_up</i> Trending
+                      </h6>
+                      <h4 class="card-title">
+                        <%= link_to listing.name, listing %>
+                      </h4>
+                    </div>
+                    <div class="card-footer ">
+                      <div class="author">
+                        <a href="#pablo">
+                          <img src="<%= asset_url('marc.jpg') %>" alt="..." class="avatar img-raised">
+                          <span><%= listing.user.name %></span>
+                        </a>
+                      </div>
+                      <div class="stats ml-auto">
+                        <i class="material-icons">schedule</i> <%= number_to_currency(listing.price) %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              <% if user_signed_in? %>
+                <div class="col-lg-4 col-md-6">
+                  <div class="rotating-card-container" style="margin-bottom: 30px;">
+                    <div class="card card-rotate card-background">
+                      <div class="front front-background" style="background-image: url(&quot;<%= asset_url('card.jpg') %>&quot;); width: 350px;">
+                        <div class="card-body">
+                          <h6 class="card-category">Seller Central</h6>
+                          <a href="#pablo">
+                            <h3 class="card-title">Manage Your Products</h3>
+                          </a>
+                          <p class="card-description">
+                            We have simplified the process of listing your products and managing them. You can do virtually everything right from the home page.<br>
+                            <br>
+                            1. Update Products<br>
+                            2. Update Descriptions of Products<br>
+                            3. Add new Products<br>
+                            4. Checkout Sales<br>
+                            5. Review Settlements<br>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="back back-background" style="background-image: url(&quot;<%= asset_url('card.jpg') %>&quot;); width: 350px;">
+                        <div class="card-body">
+                          <h5 class="card-title">
+                            Manage Post
+                          </h5>
+                          <p class="card-description">As an Seller, you have shortcuts to edit, view or delete the posts.</p>
+                          <div class="footer text-center">
+                            <%= link_to seller_path, class:"btn btn-info btn-just-icon btn-fill btn-round" do %>
+                              <i class="material-icons">subject</i>
+                            <% end %>
+                            <%= link_to seller_path, class:"btn btn-success btn-just-icon btn-fill btn-round btn-wd" do %>
+                              <i class="material-icons">mode_edit</i>
+                            <% end %>
+                            <%= link_to seller_path, class:"btn btn-danger btn-just-icon btn-fill btn-round" do %>
+                              <i class="material-icons">delete</i>
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section section-blog padding-zero">
+  <div class="container">
+    <h2 class="section-title">Latest from the Slime World</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card card-blog">
+          <div class="card-header card-header-image">
+            <a href="#pablo">
+              <img src="<%= asset_url('fashion_slime.jpg') %>" alt="">
+            </a>
+            <div class="colored-shadow" style="background-image: url(&quot;<%= asset_url('fashion_slime.jpg') %>&quot;); opacity: 1;"></div>
+          </div>
+          <div class="card-body">
+            <h6 class="card-category text-rose">Fashion Slime</h6>
+            <h4 class="card-title">
+              <a href="#pablo">Learn how to wear your scarf with a floral print shirt</a>
+            </h4>
+            <p class="card-description">
+              Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-blog">
+          <div class="card-header card-header-image">
+            <a href="#pablo">
+              <img src="<%= asset_url('china_slime.jpg') %>" alt="">
+            </a>
+            <div class="colored-shadow" style="background-image: url(&quot;<%= asset_url('china_slime.jpg') %>&quot;); opacity: 1;"></div>
+          </div>
+          <div class="card-body">
+            <h6 class="card-category text-rose">Slime from China</h6>
+            <h4 class="card-title">
+              <a href="#pablo">Katy Perry was wearing a Dolce &amp; Gabanna arc dress</a>
+            </h4>
+            <p class="card-description">
+              Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-blog">
+          <div class="card-header card-header-image">
+            <a href="#pablo">
+              <img src="<%= asset_url('fun.jpg') %>" alt="">
+            </a>
+            <div class="colored-shadow" style="background-image: url(&quot;<%= asset_url('fun.jpg') %>&quot;); opacity: 1;"></div>
+          </div>
+          <div class="card-body">
+            <h6 class="card-category text-rose">Simple and Fun</h6>
+            <h4 class="card-title">
+              <a href="#pablo">Check the latest fashion events and which are the trends</a>
+            </h4>
+            <p class="card-description">
+              Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="subscribe-line subscribe-line-image">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <div class="text-center">
+          <h3 class="title">Subscribe to our Newsletter</h3>
+          <p class="description">
+            Join our newsletter and get news in your inbox every week! We hate spam too, so no worries about this.
+          </p>
+        </div>
+        <div class="card card-raised card-form-horizontal">
+          <div class="card-body">
+            <form method="" action="#">
+              <div class="row">
+                <div class="col-sm-8">
+                  <span class="bmd-form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="material-icons">mail</i>
+                        </span>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Your Email...">
+                    </div>
+                  </span>
+                </div>
+                <div class="col-sm-4">
+                  <button type="button" class="btn btn-rose btn-block">Subscribe</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

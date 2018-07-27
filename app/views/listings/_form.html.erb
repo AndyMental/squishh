@@ -1,0 +1,98 @@
+<%= form_for(@listing, :html => { :multipart => true }) do |f| %>
+  <% if @listing.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h4>
+      <ul>
+        <% @listing.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div id="stripe_error" class="alert alert-danger" style="display:none">
+    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+  </div>
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :summary %><br>
+    <%= f.text_field :summary, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.cktext_area :description, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price %><br>
+    <%= f.text_field :price, class: "form-control" %>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Main Image</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="material-icons">attach_file</i>
+          </span>
+        </div>
+        <%= f.file_field :image, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>Secondary Image 1</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="material-icons">attach_file</i>
+          </span>
+        </div>
+        <%= f.file_field :secondary_image1, class: "form-control", placeholder:"Profile Image..." %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>Secondary Image 2</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="material-icons">attach_file</i>
+          </span>
+        </div>
+        <%= f.file_field :secondary_image2, class: "form-control", placeholder:"Profile Image..." %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>Secondary Image 3</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="material-icons">attach_file</i>
+          </span>
+        </div>
+        <%= f.file_field :secondary_image3, class: "form-control", placeholder:"Profile Image..." %>
+      </div>
+    </div>
+  </div>
+  <%# if current_user.recipient.blank? %>
+  <!-- <br>
+    <h1>Bank Account Information</h1>
+    <div class="form-group">
+      <%#= label_tag :country %>
+      <%#= text_field_tag :country, nil, { :name => nil, :'data-stripe' => "country", class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <%#= label_tag :routing_number %>
+      <%#= text_field_tag :routing_number, nil, { :name => nil, :'data-stripe' => "routingNumber", class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <%#= label_tag :account_number %>
+      <%#= text_field_tag :account_number, nil, { :name => nil, :'data-stripe' => "accountNumber", class: "form-control" } %>
+    </div> -->
+  <%# end %>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to 'Back', listings_path, class: "btn btn-primary" %>
+  </div>
+<% end %>

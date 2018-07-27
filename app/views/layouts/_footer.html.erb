@@ -1,0 +1,82 @@
+<footer class="footer footer-black footer-big">
+  <div class="container">
+    <div class="content">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>About Us</h5>
+          <p>Squishh is a startup that allows people to buy and sell Smile Toys and Products. </p>
+          <p>We love to play and have fun, We also care deeply for how people interact with a new toys and innovations around the world. We are giving power businesses and individuals to create a new marketing channel by curating all fun slime toys around the world. </p>
+        </div>
+        <div class="col-md-4">
+          <h5>Social Feed</h5>
+          <div class="social-feed">
+            <div class="feed-line">
+              <i class="fa fa-twitter"></i>
+              <p>Enjoy new and innovative products from all around the word.</p>
+            </div>
+            <div class="feed-line">
+              <i class="fa fa-twitter"></i>
+              <p>The tangible benefits of getting started with pasive income..</p>
+            </div>
+            <div class="feed-line">
+              <i class="fa fa-facebook-square"></i>
+              <p>A collection of 25 stunning toys that you can have fun with.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h5>Instagram Feed</h5>
+          <div class="gallery-feed">
+            <% Listing.all.last(9).each do |listing| %>
+              <%= image_tag listing.image.url(:thumb), class: "img img-raised rounded" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <%= link_to root_path, class: "footer-brand" do %>
+      <div class="footer-logo-small">
+        <%= image_tag "logo", class: "img-fluid" %>
+      </div>
+    <% end %>
+    <ul class="pull-center">
+      <li>
+        <a href="#pablo">
+          Blog
+        </a>
+      </li>
+      <li>
+        <%= link_to "Know about Us", pages_about_path %>
+      </li>
+      <li>
+        <%= link_to "Contact", pages_contact_path %>
+      </li>
+    </ul>
+    <ul class="social-buttons float-right">
+      <li>
+        <a href="https://twitter.com/squishh" target="_blank" class="btn btn-just-icon btn-link">
+          <i class="fa fa-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.facebook.com/squishh" target="_blank" class="btn btn-just-icon btn-link">
+          <i class="fa fa-facebook-square"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/squishh" target="_blank" class="btn btn-just-icon btn-link">
+          <i class="fa fa-instagram"></i>
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <div class="copyright float-right">
+      ©
+      <script>
+        document.write(new Date().getFullYear())
+      </script>, designed and developed with <i class="material-icons">favorite</i> by
+      <a href="https://www.andymental.com/" target="_blank">Andy Mental</a> for a better web.
+    </div>
+  </div>
+</footer>

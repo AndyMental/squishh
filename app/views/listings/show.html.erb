@@ -1,0 +1,175 @@
+<style>
+  .nbs-flexisel-nav-left {
+      left: 0px !important;
+  }
+  .nbs-flexisel-nav-right {
+      right: 0px !important;
+  }
+</style>
+<div class="page-header header-filter header-small" data-parallax="true" style="background-image: url(&quot;<%= asset_url('product-main.jpg') %>&quot;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 ml-auto mr-auto text-center">
+        <h1 class="title"><%= @listing.name %></h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section section-gray">
+  <div class="container">
+    <div class="main main-raised main-product">
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <div class="tab-content" style="padding: 10px;">
+            <div class="tab-pane active" id="product-page1">
+              <%= image_tag @listing.image.url, class: "img-fluid" %>
+            </div>
+            <% if @listing.secondary_image1.url !="/secondary_image1s/original/missing.png" %>
+              <div class="tab-pane" id="product-page2">
+                <%= image_tag @listing.secondary_image1.url, class: "img-fluid" %>
+              </div>
+            <% end %>
+            <% if @listing.secondary_image2.url !="/secondary_image2s/original/missing.png" %>
+              <div class="tab-pane" id="product-page3">
+                <%= image_tag @listing.secondary_image2.url, class: "img-fluid" %>
+              </div>
+            <% end %>
+            <% if @listing.secondary_image3.url !="/secondary_image3s/original/missing.png" %>
+              <div class="tab-pane" id="product-page4">
+                <%= image_tag @listing.secondary_image3.url, class: "img-fluid" %>
+              </div>
+            <% end %>
+          </div>
+          <ul class="nav flexi-nav" data-tabs="tabs" id="flexiselDemo1">
+            <li class="nav-item">
+              <a href="#product-page1" class="nav-link" data-toggle="tab">
+                <img src="<%= @listing.image.url(:thumb) %>" class="img-fluid">
+              </a>
+            </li>
+            <% if @listing.secondary_image1.url !="/secondary_image1s/original/missing.png" %>
+              <li class="nav-item">
+                <a href="#product-page2" class="nav-link" data-toggle="tab">
+                  <img src="<%= @listing.secondary_image1.url(:thumb) %>" class="img-fluid">
+                </a>
+              </li>
+            <% end %>
+            <% if @listing.secondary_image2.url !="/secondary_image2s/original/missing.png" %>
+              <li class="nav-item">
+                <a href="#product-page3" class="nav-link" data-toggle="tab">
+                  <img src="<%= @listing.secondary_image2.url(:thumb) %>" class="img-fluid">
+                </a>
+              </li>
+            <% end %>
+            <% if @listing.secondary_image3.url !="/secondary_image3s/original/missing.png" %>
+              <li class="nav-item">
+                <a href="#product-page4" class="nav-link" data-toggle="tab">
+                  <img src="<%= @listing.secondary_image3.url(:thumb) %>" class="img-fluid">
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <div class="card-body">
+            <h2 class="title"><%= @listing.name %></h2>
+            <h3 class="main-price"><%= number_to_currency(@listing.price) %></h3>
+            <div class="card-body">
+              <p><%= @listing.summary %></p>
+              <p>
+                <a href="#moreinfo" class="btn btn-success btn-round">
+                  More Info
+                </a>
+                <%= link_to "Buy It Now", new_listing_order_path(@listing), class: "btn btn-rose btn-round", data: { no_turbolink: true } %></p>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+      <div class="row" id="moreinfo">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="card-body">
+            <p><%= raw @listing.description %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="features text-center">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="info">
+          <div class="icon icon-info">
+            <i class="material-icons">local_shipping</i>
+          </div>
+          <h4 class="info-title">2 Days Delivery </h4>
+          <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="info">
+          <div class="icon icon-success">
+            <i class="material-icons">verified_user</i>
+          </div>
+          <h4 class="info-title">Refundable Policy</h4>
+          <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="info">
+          <div class="icon icon-rose">
+            <i class="material-icons">favorite</i>
+          </div>
+          <h4 class="info-title">Popular Item</h4>
+          <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="related-products" style="padding: 30px;">
+    <h3 class="title text-center">You may also be interested in:</h3>
+    <div class="row">
+      <% @related.last(4).each do |listing| %>
+        <div class="col">
+          <div class="card card-product">
+            <div class="card-header card-header-image">
+              <%= link_to listing do %>
+                <%= image_tag listing.image.url(:medium), class: "img-fluid" %>
+              <% end %>
+            </a>
+          </div>
+          <div class="card-body">
+            <h6 class="card-category text-rose"><%= number_to_currency(@listing.price) %></h6>
+            <h4 class="card-title">
+              <%= link_to listing.name, listing %>
+            </h4>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
+<script>
+  $(document).ready(function() {
+      $("#flexiselDemo1").flexisel({
+          visibleItems: 3,
+          itemsToScroll: 1,
+          animationSpeed: 400,
+          enableResponsiveBreakpoints: true,
+          responsiveBreakpoints: {
+              portrait: {
+                  changePoint: 480,
+                  visibleItems: 2
+              },
+              landscape: {
+                  changePoint: 640,
+                  visibleItems: 2
+              },
+              tablet: {
+                  changePoint: 768,
+                  visibleItems: 2
+              }
+          }
+      });
+  });
+</script>
