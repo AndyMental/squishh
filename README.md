@@ -1,3 +1,4 @@
+<span style="color: green"> Some green text </span>
 Tasks Completed <span style="color:green">some *green* text</span>.
 Tasks to be Done <span style="color:blue">some *blue* text</span>.
 Tasks in Progress <span style="color:amber">some *amber* text</span>.
