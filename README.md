@@ -35,6 +35,9 @@ test login using test@test.com & password as "password" without inverted commas
 - ![#](https://placehold.it/15/FFC443/000000?text=+) privacy policy
 - ![#](https://placehold.it/15/FFC443/000000?text=+) terms and conditions
 - ![#](https://placehold.it/15/FFC443/000000?text=+) become a seller with us page
+- ![#](https://placehold.it/15/FF0000/000000?text=+) Search Page
+- ![#](https://placehold.it/15/FF0000/000000?text=+) Extended pages for listing products - main page will show 11 products on the page and rest of them would be converted as next page and so on.
+- ![#](https://placehold.it/15/FF0000/000000?text=+) Images need further management and enhancement
 
 ### Payment Integration
 - ![#](https://placehold.it/15/05B3FF/000000?text=+) stripe setup
